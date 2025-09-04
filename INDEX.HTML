@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Teachers' Day!</title>
+    <style>
+        body {
+            background: radial-gradient(circle at 60% 40%, #fffbe7 0%, #ffe5b4 100%);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .confetti {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .confetti span {
+            position: absolute;
+            font-size: 1.5em;
+            animation: confetti-fall 3s linear infinite;
+        }
+        @keyframes confetti-fall {
+            0% { transform: translateY(-40px) rotate(0deg);}
+            100% { transform: translateY(100vh) rotate(360deg);}
+        }
+        .greeting-card {
+            background: #fffbe7;
+            border: 4px dashed #f7c873;
+            border-radius: 32px;
+            box-shadow: 0 12px 36px rgba(230,126,34,0.12), 0 0 0 8px #ffe5b4 inset;
+            padding: 60px 40px 64px 40px;
+            text-align: center;
+            max-width: 800px;
+            min-height: 520px;
+            position: relative;
+            z-index: 1;
+            overflow: visible;
+        }
+        .greeting-card h1 {
+            color: #e67e22;
+            margin-bottom: 16px;
+            font-size: 2.5em;
+            font-family: 'Pacifico', cursive, sans-serif;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 8px #f7c87355;
+        }
+        .greeting-card p {
+            color: #555;
+            font-size: 1.15em;
+            margin-bottom: 32px;
+            background: #fff9e3;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 2px 8px #f7c87322;
+        }
+        .icon {
+            font-size: 4em;
+            color: #f7c873;
+            margin-bottom: 8px;
+            animation: bounce 1.2s infinite alternate;
+            text-shadow: 0 4px 12px #e67e2244;
+        }
+        @keyframes bounce {
+            to { transform: translateY(-12px); }
+        }
+        .flowers {
+            position: absolute;
+            top: -38px;
+            left: -38px;
+            right: -38px;
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .flower {
+            font-size: 2.5em;
+            filter: drop-shadow(0 2px 4px #f7c87388);
+            animation: flower-spin 3s linear infinite;
+        }
+        @keyframes flower-spin {
+            0% { transform: rotate(0deg);}
+            100% { transform: rotate(360deg);}
+        }
+        .ribbon {
+            position: absolute;
+            bottom: -24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, #f7c873 60%, #e67e22 100%);
+            color: #fff;
+            padding: 10px 40px;
+            border-radius: 16px;
+            font-size: 1.15em;
+            font-weight: bold;
+            box-shadow: 0 2px 8px #e67e2244;
+            letter-spacing: 1px;
+            border: 2px solid #fff9e3;
+        }
+        .heart {
+            position: absolute;
+            top: 16px;
+            right: 24px;
+            font-size: 2.2em;
+            color: #e67e22;
+            animation: pulse 1.5s infinite;
+            text-shadow: 0 2px 8px #f7c87388;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1);}
+            50% { transform: scale(1.2);}
+        }
+        .border-decor {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            font-size: 1.7em;
+            animation: twinkle 2s infinite alternate;
+        }
+        .star {
+            color: #e67e22;
+            filter: drop-shadow(0 2px 4px #f7c87388);
+        }
+        @keyframes twinkle {
+            to { opacity: 0.6; }
+        }
+        .hat {
+            position: absolute;
+            top: -54px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: hat-bounce 1.5s infinite alternate;
+        }
+        @keyframes hat-bounce {
+            to { transform: translateX(-50%) translateY(-8px);}
+        }
+        .balloons {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 9;
+        }
+        .balloon {
+            position: absolute;
+            font-size: 2.5em;
+            animation: balloon-float 4s linear infinite;
+            opacity: 0.85;
+        }
+        @keyframes balloon-float {
+            0% { transform: translateY(100vh);}
+            100% { transform: translateY(-40px);}
+        }
+        /* Add sparkle effect around the card */
+        .sparkle {
+            position: absolute;
+            pointer-events: none;
+            z-index: 2;
+            font-size: 1.3em;
+            animation: sparkle-fade 2s infinite alternate;
+        }
+        @keyframes sparkle-fade {
+            0% { opacity: 1;}
+            100% { opacity: 0.3;}
+        }
+        /* Add a subtle glow to the greeting card */
+        .greeting-card::after {
+            content: "";
+            position: absolute;
+            top: -10px; left: -10px; right: -10px; bottom: -10px;
+            border-radius: 36px;
+            box-shadow: 0 0 32px 8px #ffe5b4cc;
+            z-index: -1;
+        }
+        .animated-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 16px;
+    object-fit: cover;
+    box-shadow: 0 4px 16px #f7c87344;
+    margin-bottom: 16px;
+    animation: img-pop 1.5s cubic-bezier(.68,-0.55,.27,1.55) infinite alternate;
+}
+@keyframes img-pop {
+    0% { transform: scale(1) rotate(-2deg);}
+    50% { transform: scale(1.08) rotate(2deg);}
+    100% { transform: scale(1) rotate(-2deg);}
+}
+    </style>
+    <!-- Google Fonts for Pacifico -->
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="confetti">
+        <span style="left:10%;animation-delay:0s;">🎉</span>
+        <span style="left:25%;animation-delay:.5s;">✨</span>
+        <span style="left:40%;animation-delay:1s;">🎊</span>
+        <span style="left:55%;animation-delay:.2s;">🌟</span>
+        <span style="left:70%;animation-delay:.8s;">🎉</span>
+        <span style="left:85%;animation-delay:.3s;">✨</span>
+    </div>
+    <div class="greeting-card">
+        <div class="heart">❤️</div>
+            <span class="heart">❤️</span>
+        <div class="content">
+            <img src="mine .jpg" alt="Teacher Day" class="animated-img">
+            <div class="flowers">
+                <span class="flower">🌸</span>
+                <span class="flower">🌻</span>
+                <span class="flower">🌼</span>
+                <span class="flower">🌷</span>
+            </div>
+            <div class="icon">📚</div>
+            <h1>Happy Teachers' Day Cupcake!</h1>
+            <p>
+                “Happy Teachers’ Day, my love 🤍. I feel so proud to see the way you dedicate yourself to your students with patience, kindness, and wisdom. You’re shaping not just their education, but their lives too. To me, you’ll always be the most inspiring teacher and the most wonderful person. Wishing you a beautiful day filled with love and respect.” 
+                Come let’s celebrate the amazing impact you make every day!
+            </p>
+            <div class="ribbon">We appreciate you and get well soon. come back soon !!</div>
+            <div class="border-decor">
+                <span class="star">⭐</span>
+                <span class="star">🌟</span>
+                <span class="star">⭐</span>
+                <span class="star">🌟</span>
+            </div>
+            <div class="hat">
+                <span style="font-size:2.5em;">🎓</span>
+            </div>
+            <!-- Sparkles around the card -->
+            <span class="sparkle" style="top:-18px;left:24px;">✨</span>
+            <span class="sparkle" style="top:-18px;right:24px;">✨</span>
+            <span class="sparkle" style="bottom:-18px;left:48px;">✨</span>
+            <span class="sparkle" style="bottom:-18px;right:48px;">✨</span>
+        </div>
+        <div class="border-decor">
+            <span class="star">⭐</span>
+            <span class="star">🌟</span>
+            <span class="star">⭐</span>
+            <span class="star">🌟</span>
+        </div>
+        <div class="hat">
+            <span style="font-size:2.5em;">🎓</span>
+        </div>
+        <!-- Sparkles around the card -->
+        <span class="sparkle" style="top:-18px;left:24px;">✨</span>
+        <span class="sparkle" style="top:-18px;right:24px;">✨</span>
+        <span class="sparkle" style="bottom:-18px;left:48px;">✨</span>
+        <span class="sparkle" style="bottom:-18px;right:48px;">✨</span>
+    </div>
+    <div class="balloons">
+        <span class="balloon" style="left:12%;animation-delay:0s;">🎈</span>
+        <span class="balloon" style="left:28%;animation-delay:.7s;">🎈</span>
+        <span class="balloon" style="left:60%;animation-delay:.3s;">🎈</span>
+        <span class="balloon" style="left:80%;animation-delay:.5s;">🎈</span>
+    </div>
+</body>
+</html> 
